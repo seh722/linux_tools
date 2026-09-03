@@ -33,14 +33,19 @@ YELLOW_BG=$(colorize $(tput setab 172))
 BLUE_FG=$(colorize $(tput setaf 69))
 BLUE_BG=$(colorize $(tput setab 69))
 
+GREEN_FG=$(colorize $(tput setaf 2))
+GREEN_BG=$(colorize $(tput setab 2))
+
 PS1="\n"
-PS1+="${BLUE_BG}${BLACK_FG} ${RESET}"
-PS1+="${YELLOW_BG}${BLUE_FG}${RESET}"
-PS1+="${YELLOW_BG}${BLACK_FG}  \w ${RESET}"
-PS1+="${BLUE_BG}${YELLOW_FG}"
+PS1+="${BLUE_BG}${BLACK_FG} ${RESET}"        # Tag 
+PS1+="${GREEN_BG}${BLUE_FG}${RESET}"        # Wedge
+PS1+="${GREEN_BG}${BLACK_FG}  \${CONDA_DEFAULT_ENV:-}${RESET}"   # Conda Tag
+PS1+="${YELLOW_BG}${GREEN_FG}${RESET}"       # Wedge 
+PS1+="${YELLOW_BG}${BLACK_FG}  \w ${RESET}"  # Tag
+PS1+="${BLUE_BG}${YELLOW_FG}"                # Wedge
 PS1+="${BLUE_BG}${BLACK_FG}${BOLD}"
-PS1+='$(__git_ps1 "  %s ")'"${RESET}"
-PS1+="${BLUE_FG}${RESET}"
+PS1+='$(__git_ps1 "  %s ")'"${RESET}"        # Git Tag
+PS1+="${BLUE_FG}${RESET}"                    # Last Wedge
 PS1+=$'\n'
 PS1+="${YELLOW_FG}󱞩  ${RESET}"
 
